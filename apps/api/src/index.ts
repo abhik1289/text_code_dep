@@ -1,11 +1,13 @@
-import { log } from "@repo/logger";
-import { createServer } from "./server";
+import express, { Request, Response } from 'express';
 
-const port = process.env.PORT || 5001;
-const app = createServer();
+const app: express.Express = express();
+const PORT = process.env.PORT || 3000;
 
-// server.listen(port, () => {
-//   log(`api running on ${port}`);
+app.get('/api/hello', (req: Request, res: Response) => {
+    res.json({ message: 'Hello from plain Express app!' });
+});
+//test
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
 // });
-
 export default app;
